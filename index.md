@@ -1,4 +1,4 @@
-name: Step 3, Customize your homepage
+Homepage
 
 # This step triggers after the learner updates their homepage.
 # This workflow updates from step 3 to step 4.
