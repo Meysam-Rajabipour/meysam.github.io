@@ -3,50 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My IT & Cloud Portfolio</title>
+  <title>Home - SBlog</title>
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4f8;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      text-align: center;
     }
-    header {
-      background: #0a66c2; /* Azure-like blue */
-      padding: 15px 40px;
+    .navbar {
+      background-color: #0a66c2;
+      padding: 15px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      justify-content: flex-end;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.4em;
-      color: #fff;
-    }
-    nav a {
-      margin-left: 20px;
+    .navbar a {
+      color: white;
       text-decoration: none;
-      color: #fff;
+      margin-left: 20px;
       font-weight: bold;
-      transition: color 0.3s;
     }
-    nav a:hover {
+    .navbar a:hover {
       color: #ffdd57;
     }
-    main {
-      max-width: 800px;
-      margin: 60px auto;
-      text-align: center;
-      padding: 20px;
-    }
-    main h2 {
+    h1 {
+      margin-top: 60px;
       color: #0a66c2;
     }
-    .tagline {
-      font-size: 1.1em;
+    p {
       color: #555;
-      margin-top: 10px;
     }
     .btn-test {
       display: inline-block;
@@ -54,39 +39,35 @@
       padding: 12px 24px;
       background: #0a66c2;
       color: #fff;
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: background 0.3s;
     }
     .btn-test:hover {
       background: #084a8c;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     footer {
-      text-align: center;
-      padding: 20px;
       margin-top: 50px;
-      color: #666;
+      padding: 20px;
       font-size: 0.9em;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>My IT & Cloud Portfolio</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#about">About Us</a>
-      <a href="#contact">Contact Us</a>
-      <a href="https://meysam-rajabipour.github.io/SBlog/Test/index.html">Test Page</a>
-    </nav>
-  </header>
-  <main>
-    <h2>Welcome 👋</h2>
-    <p class="tagline">System Administrator | Network Engineer | Monitoring Specialist | Azure & Cloud Enthusiast</p>
-    <a href="https://meysam-rajabipour.github.io/SBlog/Test/index.html" class="btn-test">Go to Test Page</a>
-  </main>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactus.html">Contact Us</a>
+    <a href="https://meysam-rajabipour.github.io/SBlog/Test/index.html">Test Page</a>
+  </div>
+
+  <h1>Welcome to My IT & Cloud Portfolio 👋</h1>
+  <p>System Administrator | Network Engineer | Monitoring | Azure | Cloud</p>
+
+  <a href="https://meysam-rajabipour.github.io/SBlog/Test/index.html" class="btn-test">Go to Test Page</a>
+
   <footer>
     © 2025 – Built with passion for IT, Cloud, and Monitoring.
   </footer>
