@@ -151,7 +151,7 @@
     </div>
     <div class="hero-card fade-up" id="statCard" aria-live="polite">
       <h3 style="margin:0 0 6px">Site Stats (Live)</h3>
-      <p class="tiny">These update on page load — tweak as you like.</p>
+      <p class="tiny">Update for Today!</p>
       <div class="grid cols-2" style="margin-top:12px">
         <div class="card"><h3>🌍 Visitors</h3><p id="visitors">--</p></div>
         <div class="card"><h3>⏱️ Uptime</h3><p id="uptime">--</p></div>
@@ -171,6 +171,118 @@
       <div class="card"><span class="pill">DX</span><h3>Easy to edit</h3><p>Everything in one file. Copy, paste, and go.</p></div>
     </div>
   </section>
+
+  
+
+  <!-- SLIDESHOW SECTION -->
+<section id="slideshow" class="container fade-up">
+  <h2>....</h2>
+  <p class="lead">My Projects</p>
+
+  <div class="slideshow-container">
+
+    <div class="slide fade">
+      <img src="https://www.saviantconsulting.com/images/blog/10-reasons-why-choose-azure-for-your-enterprise.png" alt="Slide 1" />
+    </div>
+
+    <div class="slide fade">
+      <img src="https://www.loffler.com/hs-fs/hubfs/Microsoft%20Azure%20Blog.jpg?height=420&name=Microsoft%20Azure%20Blog.jpg" alt="Slide 2" />
+    </div>
+
+    <div class="slide fade">
+      <img src="https://www.influentialsoftware.com/wp-content/uploads/2024/01/cloud-storage-background-business-network-design.jpg" alt="Slide 3" />
+    </div>
+
+    <!-- کنترل دستی -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- نقاط پایین -->
+  <div style="text-align:center; margin-top:12px;">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+  </div>
+</section>
+
+<style>
+.slideshow-container {
+  max-width: 600px;
+  position: relative;
+  margin: auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.slide {
+  display: none;
+}
+.slide img {
+  width: 100%;
+  border-radius: 12px;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background: rgba(0,0,0,0.4);
+}
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+.active, .dot:hover { background-color: #717171; }
+</style>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+
+// Automatic slideshow (optional)
+setInterval(() => { plusSlides(1); }, 4000);
+
+
+</script>
 
   <!-- FEATURES -->
   <section id="features" class="container fade-up">
