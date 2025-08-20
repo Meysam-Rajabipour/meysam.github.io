@@ -174,69 +174,93 @@
 
   
 
-  <!-- SLIDESHOW SECTION -->
+  
+<!-- SLIDESHOW SECTION -->
 <section id="slideshow" class="container fade-up">
-  <h2>....</h2>
-  <p class="lead">My Projects</p>
+  <h2>Photos</h2>
+  <p class="lead">....</p>
 
   <div class="slideshow-container">
 
-    <div class="slide fade">
+    <div class="slide">
       <img src="https://www.saviantconsulting.com/images/blog/10-reasons-why-choose-azure-for-your-enterprise.png" alt="Slide 1" />
     </div>
 
-    <div class="slide fade">
+    <div class="slide">
       <img src="https://www.loffler.com/hs-fs/hubfs/Microsoft%20Azure%20Blog.jpg?height=420&name=Microsoft%20Azure%20Blog.jpg" alt="Slide 2" />
     </div>
 
-    <div class="slide fade">
+    <div class="slide">
       <img src="https://www.influentialsoftware.com/wp-content/uploads/2024/01/cloud-storage-background-business-network-design.jpg" alt="Slide 3" />
     </div>
-
-    <!-- کنترل دستی -->
+      <div class="slide">
+      <img src="https://www.color-hex.com/palettes/52222.png" alt="Slide 4" />
+    </div>                    
+    <!-- Controls -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
 
-  <!-- نقاط پایین -->
+  <!-- Dots -->
   <div style="text-align:center; margin-top:12px;">
     <span class="dot" onclick="currentSlide(1)"></span> 
     <span class="dot" onclick="currentSlide(2)"></span> 
     <span class="dot" onclick="currentSlide(3)"></span> 
+    <span class="dot" onclick="currentSlide(4)"></span> 
   </div>
 </section>
 
 <style>
+/* Fixed frame + consistent sizing */
 .slideshow-container {
-  max-width: 600px;
+  width: 100%;
+  max-width: 800px;   /* frame width */
+  height: 420px;      /* frame height */
   position: relative;
   margin: auto;
-  border-radius: 12px;
-  overflow: hidden;
+  border-radius: 16px;
+  overflow: hidden;   /* crop overflow so frame stays fixed */
+  background: #000;   /* behind images */
+  border: 6px solid #333;   /* the visible fixed frame */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.55);
 }
+
+/* Stack slides in the same fixed frame */
 .slide {
+  position: absolute;
+  inset: 0;           /* top:0; right:0; bottom:0; left:0 */
   display: none;
+  text-align: center;
 }
+
+/* Make every image fill the frame without distortion */
 .slide img {
   width: 100%;
-  border-radius: 12px;
+  height: 100%;
+  object-fit: cover;  /* crop edges, keep aspect ratio */
+  display: block;
 }
+
+/* Controls */
 .prev, .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  width: auto;
-  margin-top: -22px;
   padding: 16px;
   color: white;
   font-weight: bold;
   font-size: 24px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
   background: rgba(0,0,0,0.4);
+  user-select: none;
+  border-radius: 6px;
+  transform: translateY(-50%);
+  z-index: 2; /* keep above images */
 }
-.next { right: 0; border-radius: 3px 0 0 3px; }
-.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+.next { right: 10px; }
+.prev { left: 10px; }
+.prev:hover, .next:hover { background: rgba(9, 219, 89, 0.8); }
+
+/* Dots */
 .dot {
   cursor: pointer;
   height: 12px;
@@ -245,44 +269,92 @@
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
-  transition: background-color 0.3s;
 }
-.active, .dot:hover { background-color: #717171; }
+.active, .dot:hover { background-color: #ca1616; }
+
+/* --- Animation effects (10 total) --- */
+.fadeIn { animation: fadeIn 2s; }
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+.slideLeft { animation: slideLeft 2s; }
+@keyframes slideLeft { from {transform:translateX(100%);} to {transform:translateX(0);} }
+
+.slideRight { animation: slideRight 2s; }
+@keyframes slideRight { from {transform:translateX(-100%);} to {transform:translateX(0);} }
+
+.zoomIn { animation: zoomIn 2s; }
+@keyframes zoomIn { from {transform:scale(0.5);opacity:0;} to {transform:scale(1);opacity:1;} }
+
+.rotateIn { animation: rotateIn 1s; }
+@keyframes rotateIn { from {transform:rotate(-180deg);opacity:0;} to {transform:rotate(0);opacity:1;} }
+
+.flipX { animation: flipX 1s; transform-origin:center; }
+@keyframes flipX { from {transform:rotateX(90deg);opacity:0;} to {transform:rotateX(0);opacity:1;} }
+
+.flipY { animation: flipY 1s; transform-origin:center; }
+@keyframes flipY { from {transform:rotateY(90deg);opacity:0;} to {transform:rotateY(0);opacity:1;} }
+
+.blurIn { animation: blurIn 1s; }
+@keyframes blurIn { from {filter:blur(10px);opacity:0;} to {filter:blur(0);opacity:1;} }
+
+.bounceIn { animation: bounceIn 1s; }
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.scaleUp { animation: scaleUp 1s; }
+@keyframes scaleUp { from {transform:scale(0.7);} to {transform:scale(1);} }
 </style>
 
 <script>
-let slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
+const effects = [
+  "fadeIn","slideLeft","slideRight","zoomIn","rotateIn",
+  "flipX","flipY","blurIn","bounceIn","scaleUp"
+];
+showSlides();
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  slideIndex += n - 1;
+  showSlides();
 }
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  slideIndex = n - 1;
+  showSlides();
 }
 
-function showSlides(n) {
+function showSlides() {
   let i;
   let slides = document.getElementsByClassName("slide");
   let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
+  
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
+    slides[i].style.display = "none";
+    slides[i].className = slides[i].className.replace(/\b(fadeIn|slideLeft|slideRight|zoomIn|rotateIn|flipX|flipY|blurIn|bounceIn|scaleUp)\b/g, "");
   }
+  
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  
+  // pick random effect
+  let effect = effects[Math.floor(Math.random() * effects.length)];
+  
+  slides[slideIndex-1].style.display = "block";  
+  slides[slideIndex-1].classList.add(effect);
+  
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
+  
+  setTimeout(showSlides, 4000); // Auto change every 4s
 }
-
-// Automatic slideshow (optional)
-setInterval(() => { plusSlides(1); }, 4000);
-
-
 </script>
+
+  <!--END OF SLIDE SHOW-->
 
   <!-- FEATURES -->
   <section id="features" class="container fade-up">
@@ -346,7 +418,7 @@ TEST
   <footer>
     <div class="container footer-grid">
       <div>
-        <strong>Made with ♥ for GitHub Pages</strong>
+        <strong>Made By Me :-) </strong>
         <p class="tiny">Replace this text with your own bio or project blurb. You can also link your socials here.</p>
       </div>
       <div>
